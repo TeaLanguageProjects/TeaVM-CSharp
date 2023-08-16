@@ -42,7 +42,7 @@ public class TeaByteCodes
         { 0x1A, "PUSH_FROM_LONG_VMCONST"}, // Push a LONG Constants To LocalStack From VMConstants
         { 0x1B, "PUSH_FROM_FLOAT_VMCONST"}, // Push a FLOAT Constants To LocalStack From VMConstants
         { 0x1C, "PUSH_FROM_DOUBLE_VMCONST"}, // Push a DOUBLE Constants To LocalStack From VMConstants
-        { 0x1C, "PUSH_FROM_CHAR_VMCONST"}, // Push a CHAR Constants To LocalStack From VMConstants
+        //{ 0x1C, "PUSH_FROM_CHAR_VMCONST"}, // Push a CHAR Constants To LocalStack From VMConstants 
             
         { 0x1D, "PUSHVM_FROM_BYTE_CONST" }, // Push a BYTE Constants To VMStack
         { 0x1E, "PUSHVM_FROM_SHORT_CONST" }, // Push a SHORT Constants To VMStack
@@ -350,15 +350,18 @@ public class TeaByteCodes
         { 0xFD, "CATCH"}, // Catch an exception
         { 0xFE, "FINALLY"}, // Throw an Finally
         { 0xFF, "JSR"}, // Jump to the suboutine
+
+        // Bytecode that was previously missed
+        { 0x100, "PUSH_FROM_CHAR_VMCONST"}, // Push a CHAR Constants To LocalStack From VMConstants
             
         // Thread Synchronization Instruction
 
-        { 0x100, "MONITOR_ENTER"}, // Enter a monitor
-        { 0x101, "MONITOR_EXIT"}, // Exit a monitor
+        { 0x101, "MONITOR_ENTER"}, // Enter a monitor
+        { 0x102, "MONITOR_EXIT"}, // Exit a monitor
         
         // Debugging Instruction
         
-        { 0x102, "BREAKPOINT"}, // Breakpoint
+        { 0x103, "BREAKPOINT"}, // Breakpoint
         
         
         
