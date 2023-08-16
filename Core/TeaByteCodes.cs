@@ -352,69 +352,80 @@ public class TeaByteCodes
         { 0xFF, "JSR"}, // Jump to the suboutine
 
         // Bytecode that was previously missed
+
         { 0x100, "PUSH_FROM_CHAR_VMCONST"}, // Push a CHAR Constants To LocalStack From VMConstants
+        { 0x101, "VM_INSTANCE_OF"}, // Determine The Type
             
         // Thread Synchronization Instruction
 
-        { 0x101, "MONITOR_ENTER"}, // Enter a monitor
-        { 0x102, "MONITOR_EXIT"}, // Exit a monitor
+        { 0x102, "MONITOR_ENTER"}, // Enter a monitor
+        { 0x103, "MONITOR_EXIT"}, // Exit a monitor
         
         // Debugging Instruction
         
-        { 0x103, "BREAKPOINT"}, // Breakpoint
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        { 0x104, "BREAKPOINT"}, // Breakpoint
+
+        // Bytecode that was previously missed
+
+        { 0x105, "VM_GET_FIELD"},
+        { 0x106, "VM_PUT_FIELD"},
+        { 0x107, "VM_GET_STATIC"},
+        { 0x108, "VM_PUT_STATIC"},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     };
 }
