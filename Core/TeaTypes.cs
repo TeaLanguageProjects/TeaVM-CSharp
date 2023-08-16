@@ -8,7 +8,7 @@ namespace TeaVM.Core
 {
     public enum TeaTypes
     {
-        NULL, BYTE, SHORT, INT, LONG, FLOAT, DOUBLE, BOOLEAN, CHAR, LINK
+        NULL, BYTE, SHORT, INT, LONG, FLOAT, DOUBLE, BOOLEAN, CHAR, LINK, LIST
 
     }
 }
