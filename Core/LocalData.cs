@@ -8,5 +8,6 @@ namespace TeaVM.Core
 {
     public class LocalData
     {
+        public byte[] ByteCodes = new Byte[]{};
     }
 }

@@ -15,7 +15,7 @@ namespace TeaVM.Core
         // All local constants are stored in the local constants dictionary
         public ConcurrentDictionary<long, TeaData> LocalConstants = new ConcurrentDictionary<long, TeaData>();
 
-        // All data like class name, class type (normal class or interfaces),package name or byte code version are stored in the class meta data
+        // All data like class byte code version are stored in the class meta data
         public ConcurrentDictionary<string, TeaData> ClassMetaData = new ConcurrentDictionary<string, TeaData>();
 
         // Required when the method is executed
@@ -35,11 +35,18 @@ namespace TeaVM.Core
 
         // Conversion Table for Storing String Symbols in Code to Number IDs in Memory
         public ConcurrentDictionary<long, string> LocalIndex = new ConcurrentDictionary<long, string>();
+        
+        // Class Type
+        public KlassType Type = KlassType.CLASS;
+
+        public string ClassName = "Main";
+        
+        public string PackageName = "Program";
 
         // Save local data of the class (such as code in the class)
         public LocalData LocalData = new LocalData();
         
-
+        
 
 
 

@@ -19,6 +19,8 @@ namespace TeaVM.Core
 
         public ConcurrentDictionary<long, string> VMIndex = new ConcurrentDictionary<long, string>();
 
+        
+
 
     }
 }
