@@ -45,7 +45,7 @@ namespace TeaVM.Core
 
         public ConcurrentBag<Klass> Interfaces = new ConcurrentBag<Klass>();
 
-        public Klass SuperClasses = new Klass();
+        public Klass SuperClasses;// = new Klass();
 
         public ConcurrentBag<KlassAnnotation> Annotations = new ConcurrentBag<KlassAnnotation>();
 

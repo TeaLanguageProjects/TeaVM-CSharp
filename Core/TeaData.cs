@@ -14,6 +14,8 @@ namespace TeaVM.Core
         public bool IsList = false;
         public byte[,] ListData = { };
 
+        public Klass SourceKlass = null;
+
         public KlassAccessModifier AccessModifier = KlassAccessModifier.PUBLIC;
         public ConcurrentBag<KlassNonAccessModifiers> NonAccessModifiers = new ConcurrentBag<KlassNonAccessModifiers>();
         public ConcurrentBag<KlassAnnotation> Annotations = new ConcurrentBag<KlassAnnotation>();
@@ -30,6 +32,7 @@ namespace TeaVM.Core
             data.Data = Data;
             data.IsList = IsList;
             data.ListData = ListData;
+            data.SourceKlass = SourceKlass;
 
             data.AccessModifier = AccessModifier;
             data.NonAccessModifiers = NonAccessModifiers;
@@ -45,6 +48,7 @@ namespace TeaVM.Core
             data.Data  = new byte[] { };
             data.IsList = false;
             data.ListData = new byte[,] { };
+            data.SourceKlass = null;
 
             data.AccessModifier = KlassAccessModifier.PUBLIC;
             data.NonAccessModifiers = new ConcurrentBag<KlassNonAccessModifiers>();
@@ -61,6 +65,7 @@ namespace TeaVM.Core
             data.Data = new byte[] { };
             data.IsList = true;
             data.ListData = new byte[,] { };
+            data.SourceKlass = null;
 
             data.AccessModifier = KlassAccessModifier.PUBLIC;
             data.NonAccessModifiers = new ConcurrentBag<KlassNonAccessModifiers>();
@@ -92,6 +97,11 @@ namespace TeaVM.Core
         public bool IsFinal()
         {
             return NonAccessModifiers.Contains(KlassNonAccessModifiers.FINAL);
+        }
+
+        public bool HasSourceKlass()
+        {
+            return this.SourceKlass != null;
         }
 
 

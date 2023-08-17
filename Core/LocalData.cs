@@ -9,5 +9,16 @@ namespace TeaVM.Core
     public class LocalData
     {
         public byte[] ByteCodes = new Byte[]{};
+
+        public byte[] ReadBytes(int n)
+        {
+            byte[] bytes = new byte[n];
+            for (int i = 0; i < n; i++)
+            {
+                bytes[i] = ByteCodes[i];
+            }
+            return bytes;
+        }
+
     }
 }
