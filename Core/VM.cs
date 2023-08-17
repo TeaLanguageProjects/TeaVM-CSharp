@@ -11,7 +11,7 @@ namespace TeaVM.Core
     {
         public ConcurrentDictionary<long, TeaData> VMConstant = new ConcurrentDictionary<long, TeaData>();
 
-        public List<TeaData> VMStack = new List<TeaData>();
+        public ConcurrentStack<TeaData> VMStack = new ConcurrentStack<TeaData>();
 
         public ConcurrentDictionary<long, VMThread> VMThreads = new ConcurrentDictionary<long, VMThread>();
 

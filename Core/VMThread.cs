@@ -10,6 +10,9 @@ namespace TeaVM.Core
     {
         public Klass ThreadKlass = new Klass();
 
-
+        public VMThread(Klass threadKlass)
+        {
+            this.ThreadKlass = threadKlass;
+        }
     }
 }
