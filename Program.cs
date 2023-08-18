@@ -22,6 +22,7 @@ namespace TeaVM.Program
             klass.LocalStack.Push(data);
             klass.LocalStack.Push(data);
             klass.LocalStack.Push(data);
+            vm.VMObjects.TryAdd(0x01, klass);
             klass.LocalData.ByteCodes = new byte[]
             {
                 0x10,
@@ -72,6 +73,7 @@ namespace TeaVM.Program
             thread.RunSync();
             
             DebugOutputTool.PrintKlass(klass);
+            DebugOutputTool.PrintVM(vm);
         }
     }
 }

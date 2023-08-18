@@ -40,6 +40,12 @@ public class DebugOutputTool
             Console.WriteLine($"- {variable.Type} => {variable.Data.ToString()} => {string.Join("", variable.Data.Select(b => b.ToString()))}");
         }
         
+        Console.WriteLine("Local Index:");
+        foreach (var variable in klass.LocalIndex)
+        {
+            Console.WriteLine($"- {variable.Key}: {variable.Value}");
+        }
+        
         Console.WriteLine("Local Variables:");
         foreach (var variable in klass.LocalVariables)
         {
@@ -56,6 +62,41 @@ public class DebugOutputTool
         
         
     }
-    
-    
+
+    public static void PrintVM(VM vm)
+    {
+        Console.WriteLine($"===========================================");
+        Console.WriteLine("VM Index:");
+        foreach (var variable in vm.VMIndex)
+        {
+            Console.WriteLine($"- {variable.Key}: {variable.Value}");
+        }
+        Console.WriteLine("VM Stack:");
+        foreach (var variable in vm.VMStack)
+        {
+            Console.WriteLine($"- {variable.Type} => {variable.Data.ToString()} => {string.Join("", variable.Data.Select(b => b.ToString()))}");
+        }
+        Console.WriteLine("VM Constants:");
+        foreach (var variable in vm.VMConstant)
+        {
+            Console.WriteLine($"- {variable.Key}: {variable.Value.Type} => {variable.Value.Data.ToString()} => {string.Join("", variable.Value.Data.Select(b => b.ToString()))}");
+        }
+        
+        Console.WriteLine("VM Objects:");
+        foreach (var variable in vm.VMObjects)
+        {
+            Console.WriteLine($"- {variable.Key}: {variable.Value.Type} => {variable.Value.AccessModifier} => {variable.Value.PackageName} - {variable.Value.ClassName}");
+        }
+        
+        Console.WriteLine("VM Static Objects:");
+        foreach (var variable in vm.VMStaticObjects)
+        {
+            Console.WriteLine($"- {variable.Key}: {variable.Value.Type} => {variable.Value.AccessModifier} => {variable.Value.PackageName} - {variable.Value.ClassName}");
+        }
+        
+        
+        
+    }
+
+
 }
