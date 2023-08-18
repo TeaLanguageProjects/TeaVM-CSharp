@@ -36,21 +36,26 @@ public class DebugOutputTool
         Console.WriteLine("Local Stack:");
         foreach (var variable in klass.LocalStack)
         {
-            Console.WriteLine($"- Type = {variable.Type} ,Data = {variable.Data.ToString()}");
+            //Console.WriteLine($"- Type = {variable.Type} ,Data = {variable.Data.ToString()}");
+            Console.WriteLine($"- {variable.Type} => {variable.Data.ToString()} => {string.Join("", variable.Data.Select(b => b.ToString()))}");
         }
         
         Console.WriteLine("Local Variables:");
         foreach (var variable in klass.LocalVariables)
         {
-            Console.WriteLine($"- {variable.Key}: {variable.Value.Type}");
+            //Console.WriteLine($"- {variable.Key}: {variable.Value.Type}");
+            Console.WriteLine($"- {variable.Key}: {variable.Value.Data.ToString()} => {string.Join("", variable.Value.Data.Select(b => b.ToString()))}");
         }
         
         Console.WriteLine("Local Constants:");
         foreach (var variable in klass.LocalConstants)
         {
-            Console.WriteLine($"- {variable.Key}: {variable.Value.Data.ToString()}");
+            //Console.WriteLine($"- {variable.Key}: {variable.Value.Data.ToString()}");
+            Console.WriteLine($"- {variable.Key}: {variable.Value.Data.ToString()} => {string.Join("", variable.Value.Data.Select(b => b.ToString()))}");
         }
         
         
     }
+    
+    
 }
