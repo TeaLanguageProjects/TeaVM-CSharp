@@ -34,6 +34,8 @@ namespace TeaVM.Core
 
                 // byte[] opCode => int opCode
                 int opCodeInt = BitConverter.ToUInt16(opCode, 0);
+                // print hex String 
+                //Console.WriteLine(opCodeInt.ToString("X"));
 
                 try
                 {
@@ -59,7 +61,7 @@ namespace TeaVM.Core
                         case 0x02:
                         {
                             // Read 8 bits data from ByteCodes as a long
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -97,7 +99,7 @@ namespace TeaVM.Core
                         }
                         case 0x03:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -135,7 +137,7 @@ namespace TeaVM.Core
                         }
                         case 0x04:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -173,7 +175,7 @@ namespace TeaVM.Core
                         }
                         case 0x05:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -211,7 +213,7 @@ namespace TeaVM.Core
                         }
                         case 0x06:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -249,7 +251,7 @@ namespace TeaVM.Core
                         }
                         case 0x07:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -287,7 +289,7 @@ namespace TeaVM.Core
                         }
                         case 0x08:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -325,7 +327,7 @@ namespace TeaVM.Core
                         }
                         case 0x09:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -363,7 +365,7 @@ namespace TeaVM.Core
                         }
                         case 0x0A:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -401,7 +403,7 @@ namespace TeaVM.Core
                         }
                         case 0x0B:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -439,7 +441,7 @@ namespace TeaVM.Core
                         }
                         case 0x0C:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -477,7 +479,7 @@ namespace TeaVM.Core
                         }
                         case 0x0D:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -515,7 +517,7 @@ namespace TeaVM.Core
                         }
                         case 0x0E:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -553,7 +555,7 @@ namespace TeaVM.Core
                         }
                         case 0x0F:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -591,10 +593,9 @@ namespace TeaVM.Core
                         }
                         case 0x10:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
-
 
                             TeaData stackData;
                             bool isSuccess = SourceKlass.LocalStack.TryPop(out stackData);
@@ -602,7 +603,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.BYTE)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -630,7 +632,7 @@ namespace TeaVM.Core
                         }
                         case 0x11:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -641,7 +643,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.SHORT)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -669,7 +672,7 @@ namespace TeaVM.Core
                         }
                         case 0x12:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -680,7 +683,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.INT)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -708,7 +712,7 @@ namespace TeaVM.Core
                         }
                         case 0x13:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -719,7 +723,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.LONG)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -747,7 +752,7 @@ namespace TeaVM.Core
                         }
                         case 0x14:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -758,7 +763,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.FLOAT)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -786,7 +792,7 @@ namespace TeaVM.Core
                         }
                         case 0x15:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -797,7 +803,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.DOUBLE)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -825,7 +832,7 @@ namespace TeaVM.Core
                         }
                         case 0x16:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -836,7 +843,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.CHAR)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -864,7 +872,7 @@ namespace TeaVM.Core
                         }
                         case 0x17:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -902,7 +910,7 @@ namespace TeaVM.Core
                         }
                         case 0x18:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -940,7 +948,7 @@ namespace TeaVM.Core
                         }
                         case 0x19:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -978,7 +986,7 @@ namespace TeaVM.Core
                         }
                         case 0x1A:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1016,7 +1024,7 @@ namespace TeaVM.Core
                         }
                         case 0x1B:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1054,7 +1062,7 @@ namespace TeaVM.Core
                         }
                         case 0x1C:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1092,7 +1100,7 @@ namespace TeaVM.Core
                         }
                         case 0x1D:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1130,7 +1138,7 @@ namespace TeaVM.Core
                         }
                         case 0x1E:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1168,7 +1176,7 @@ namespace TeaVM.Core
                         }
                         case 0x1F:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1206,7 +1214,7 @@ namespace TeaVM.Core
                         }
                         case 0x20:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1244,7 +1252,7 @@ namespace TeaVM.Core
                         }
                         case 0x21:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1282,7 +1290,7 @@ namespace TeaVM.Core
                         }
                         case 0x22:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1320,7 +1328,7 @@ namespace TeaVM.Core
                         }
                         case 0x23:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1358,7 +1366,7 @@ namespace TeaVM.Core
                         }
                         case 0x24:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1369,7 +1377,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.BYTE)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -1397,7 +1406,7 @@ namespace TeaVM.Core
                         }
                         case 0x25:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1408,7 +1417,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.SHORT)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -1436,7 +1446,7 @@ namespace TeaVM.Core
                         }
                         case 0x26:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1447,7 +1457,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.INT)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -1475,7 +1486,7 @@ namespace TeaVM.Core
                         }
                         case 0x27:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1486,7 +1497,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.LONG)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -1513,7 +1525,7 @@ namespace TeaVM.Core
                             break;
                         }
                         case 0x28:
-                        {byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                        {byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1524,7 +1536,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.FLOAT)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {
@@ -1552,7 +1565,7 @@ namespace TeaVM.Core
                         }
                         case 0x29:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1563,7 +1576,9 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.DOUBLE)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
+
                                 }
                                 else
                                 {
@@ -1591,7 +1606,7 @@ namespace TeaVM.Core
                         }
                         case 0x2A:
                         {
-                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
                             long indexId = BitConverter.ToInt64(longData, 0);
                             PC += LONG_BYTES;
 
@@ -1602,7 +1617,8 @@ namespace TeaVM.Core
                             {
                                 if (stackData.Type == TeaTypes.CHAR)
                                 {
-                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                    SourceKlass.LocalVariables.AddOrUpdate(indexId, stackData,
+                                        (existingKey, existingValue) => stackData);
                                 }
                                 else
                                 {

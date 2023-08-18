@@ -18,42 +18,55 @@ namespace TeaVM.Program
             vmdata.Data = new byte[] { 0x02 };
             vm.VMStack.Push(vmdata);
             vm.VMStack.Push(vmdata);
+            vm.VMStack.Push(vmdata);
+            klass.LocalStack.Push(data);
             klass.LocalStack.Push(data);
             klass.LocalStack.Push(data);
             klass.LocalData.ByteCodes = new byte[]
             {
                 0x10,
                 0x00,
+                0x01,
+                0x00,
+                0x00,
+                0x00,
+                0x00,
+                0x00,
+                0x00,
+                0x00,
+                
+                0x10,
                 0x00,
                 0x02,
                 0x00,
                 0x00,
                 0x00,
                 0x00,
-                0x06,
-                0x33,
-                
-                0x10,
-                0x00,
-                0x00,
-                0x05,
                 0x00,
                 0x00,
                 0x00,
-                0x00,
-                0x06,
-                0x33,
                 
                 0x26,
                 0x00,
+                0x03,
                 0x00,
                 0x00,
                 0x00,
                 0x00,
-                0x30,
                 0x00,
-                0x01,
-                0xA2,
+                0x00,
+                0x00,
+                
+                0x27,
+                0x00,
+                0x04,
+                0x00,
+                0x00,
+                0x00,
+                0x00,
+                0x00,
+                0x00,
+                0x00,
             };
             DebugOutputTool.PrintKlass(klass);
             thread.RunSync();
