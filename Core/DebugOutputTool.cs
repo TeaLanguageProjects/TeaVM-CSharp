@@ -44,14 +44,14 @@ public class DebugOutputTool
         foreach (var variable in klass.LocalVariables)
         {
             //Console.WriteLine($"- {variable.Key}: {variable.Value.Type}");
-            Console.WriteLine($"- {variable.Key}: {variable.Value.Data.ToString()} => {string.Join("", variable.Value.Data.Select(b => b.ToString()))}");
+            Console.WriteLine($"- {variable.Key}: {variable.Value.Type} => {variable.Value.Data.ToString()} => {string.Join("", variable.Value.Data.Select(b => b.ToString()))}");
         }
         
         Console.WriteLine("Local Constants:");
         foreach (var variable in klass.LocalConstants)
         {
             //Console.WriteLine($"- {variable.Key}: {variable.Value.Data.ToString()}");
-            Console.WriteLine($"- {variable.Key}: {variable.Value.Data.ToString()} => {string.Join("", variable.Value.Data.Select(b => b.ToString()))}");
+            Console.WriteLine($"- {variable.Key}: {variable.Value.Type} => {variable.Value.Data.ToString()} => {string.Join("", variable.Value.Data.Select(b => b.ToString()))}");
         }
         
         
