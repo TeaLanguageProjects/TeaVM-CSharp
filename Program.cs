@@ -8,6 +8,7 @@ namespace TeaVM.Program
         {
             Console.WriteLine("Hello, World!");
             Klass klass = new Klass();
+            klass.NonAccessModifiers.Add(KlassNonAccessModifiers.STATIC);
             VM vm  = new VM();
             VMThread thread = new VMThread(klass, vm);
             TeaData data = new TeaData();
