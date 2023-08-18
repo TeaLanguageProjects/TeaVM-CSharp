@@ -42,7 +42,7 @@ public class DebugOutputTool
         Console.WriteLine("Local Variables:");
         foreach (var variable in klass.LocalVariables)
         {
-            Console.WriteLine($"- {variable.Key}: {variable.Value}");
+            Console.WriteLine($"- {variable.Key}: {variable.Value.Type}");
         }
         
         Console.WriteLine("Local Constants:");

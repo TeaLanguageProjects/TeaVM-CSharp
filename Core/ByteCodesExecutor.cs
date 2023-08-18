@@ -1356,10 +1356,278 @@ namespace TeaVM.Core
                             }
                             break;
                         }
+                        case 0x24:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
 
 
+                            TeaData stackData;
+                            bool isSuccess = SourceVM.VMStack.TryPop(out stackData);
+                            if (isSuccess)
+                            {
+                                if (stackData.Type == TeaTypes.BYTE)
+                                {
+                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                                }
+
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                            }
+                            break;
+                        }
+                        case 0x25:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
 
 
+                            TeaData stackData;
+                            bool isSuccess = SourceVM.VMStack.TryPop(out stackData);
+                            if (isSuccess)
+                            {
+                                if (stackData.Type == TeaTypes.SHORT)
+                                {
+                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                                }
+
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                            }
+                            break;
+                        }
+                        case 0x26:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
+
+
+                            TeaData stackData;
+                            bool isSuccess = SourceVM.VMStack.TryPop(out stackData);
+                            if (isSuccess)
+                            {
+                                if (stackData.Type == TeaTypes.INT)
+                                {
+                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                                }
+
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                            }
+                            break;
+                        }
+                        case 0x27:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
+
+
+                            TeaData stackData;
+                            bool isSuccess = SourceVM.VMStack.TryPop(out stackData);
+                            if (isSuccess)
+                            {
+                                if (stackData.Type == TeaTypes.LONG)
+                                {
+                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                                }
+
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                            }
+                            break;
+                        }
+                        case 0x28:
+                        {byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
+
+
+                            TeaData stackData;
+                            bool isSuccess = SourceVM.VMStack.TryPop(out stackData);
+                            if (isSuccess)
+                            {
+                                if (stackData.Type == TeaTypes.FLOAT)
+                                {
+                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                                }
+
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                            }
+                            break;
+                        }
+                        case 0x29:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
+
+
+                            TeaData stackData;
+                            bool isSuccess = SourceVM.VMStack.TryPop(out stackData);
+                            if (isSuccess)
+                            {
+                                if (stackData.Type == TeaTypes.DOUBLE)
+                                {
+                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                                }
+
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                            }
+                            break;
+                        }
+                        case 0x2A:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
+
+
+                            TeaData stackData;
+                            bool isSuccess = SourceVM.VMStack.TryPop(out stackData);
+                            if (isSuccess)
+                            {
+                                if (stackData.Type == TeaTypes.CHAR)
+                                {
+                                    SourceKlass.LocalVariables.TryAdd(indexId, stackData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                                }
+
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalVariables.TryAdd(indexId, nullData);
+                            }
+                            break;
+                        }
 
 
 
@@ -1382,6 +1650,7 @@ namespace TeaVM.Core
                 }
                 catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
                 }
             }
         }
