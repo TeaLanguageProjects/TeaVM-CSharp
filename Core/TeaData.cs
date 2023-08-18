@@ -106,6 +106,76 @@ namespace TeaVM.Core
 
 
 
+        public Byte DataToByte()
+        {
+            return Data[0];
+        }
+
+        public short DataToShort()
+        {
+            return BitConverter.ToInt16(Data, 0);
+        }
+
+        public int DataToInt()
+        {
+            return BitConverter.ToInt32(Data, 0);
+        }
+
+        public long DataToLong()
+        {
+            return BitConverter.ToInt64(Data, 0);
+        }
+
+        public float DataToFloat()
+        {
+            return BitConverter.ToSingle(Data, 0);
+        }
+
+        public double DataToDouble()
+        {
+            return BitConverter.ToDouble(Data, 0);
+        }
+
+        public char DataToChar()
+        {
+            return BitConverter.ToChar(Data, 0);
+        }
+
+        public void ByteToData(byte data)
+        {
+            this.Data = new byte[] { data };
+        }
+
+        public void ShortToData(short data)
+        {
+            this.Data = BitConverter.GetBytes(data);
+        }
+
+        public void IntToData(int data)
+        {
+            this.Data = BitConverter.GetBytes(data);
+        }
+
+        public void LongToData(long data)
+        {
+            this.Data = BitConverter.GetBytes(data);
+        }
+
+        public void FloatToData(float data)
+        {
+            this.Data = BitConverter.GetBytes(data);
+        }
+
+        public void DoubleToData(double data)
+        {
+            this.Data = BitConverter.GetBytes(data);
+        }
+        
+        public void CharToData(char data)
+        {
+            this.Data = BitConverter.GetBytes(data);
+        }
+
 
 
 
