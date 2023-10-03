@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace TeaVM.Core
         public VM ThreadVM;
         public ByteCodesExecutor ByteCodesExecutor;
         public Thread Thread;
+        
+        public ConcurrentStack<TeaData> ThreadStack = new ConcurrentStack<TeaData>();
 
         public VMThread(Klass threadKlass, VM threadVm)
         {
