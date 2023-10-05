@@ -3105,7 +3105,40 @@ namespace TeaVM.Core
                             }
                             break;
                         }
-                        
+                        case 0x53:
+                        {
+                            TeaData stackData1;
+                            TeaData stackData2;
+                            bool isSuccess1 = SourceKlass.LocalStack.TryPop(out stackData1);
+                            bool isSuccess2 = SourceKlass.LocalStack.TryPop(out stackData2);
+                            if (isSuccess1 && isSuccess2)
+                            {
+                                if (stackData1.Type == TeaTypes.INT && stackData2.Type == TeaTypes.INT)
+                                {
+                                    int int1 = BitConverter.ToInt32(stackData1.Data);
+                                    int int2 = BitConverter.ToInt32(stackData2.Data);
+                                    int result = int1 + int2;
+                                    TeaData resultData = TeaData.NewNormalData();
+                                    resultData.Type = TeaTypes.INT;
+                                    resultData.SourceKlass = SourceKlass;
+                                    resultData.Data = BitConverter.GetBytes(result);
+                                    resultData.IsList = false;
+                                    
+                                    SourceKlass.LocalStack.Push(resultData);
+                                }
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalStack.Push(nullData);
+                            }
+                            break;
+                        }
                         
                         
                         
