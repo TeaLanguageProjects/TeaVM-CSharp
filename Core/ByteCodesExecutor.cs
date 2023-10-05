@@ -2330,9 +2330,127 @@ namespace TeaVM.Core
                             }
                             break;
                         }
+                        case 0x3D:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
 
 
+                            TeaData varData = new TeaData();
+                            bool isSuccess = SourceKlass.LocalVariables.TryGetValue(indexId, out varData);
+                            if (isSuccess)
+                            {
+                                if (varData.Type == TeaTypes.LINK)
+                                {
+                                    SourceVM.VMStack.Push(varData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
 
+                                    SourceVM.VMStack.Push(nullData);
+                                }
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceVM.VMStack.Push(nullData);
+                            }
+                            break;
+                        }
+                        case 0x3E:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
+
+
+                            TeaData varData = new TeaData();
+                            bool isSuccess = SourceKlass.LocalConstants.TryGetValue(indexId, out varData);
+                            if (isSuccess)
+                            {
+                                if (varData.Type == TeaTypes.LINK)
+                                {
+                                    SourceVM.VMStack.Push(varData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceVM.VMStack.Push(nullData);
+                                }
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceVM.VMStack.Push(nullData);
+                            }
+                            break;
+                        }
+                        case 0x3F:
+                        {
+                            byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
+                            long indexId = BitConverter.ToInt64(longData, 0);
+                            PC += LONG_BYTES;
+
+
+                            TeaData varData = new TeaData();
+                            bool isSuccess = SourceVM.VMConstant.TryGetValue(indexId, out varData);
+                            if (isSuccess)
+                            {
+                                if (varData.Type == TeaTypes.LINK)
+                                {
+                                    SourceVM.VMStack.Push(varData);
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceVM.VMStack.Push(nullData);
+                                }
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceVM.VMStack.Push(nullData);
+                            }
+                            break;
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     }
                 }
                 catch (IndexOutOfRangeException e)
