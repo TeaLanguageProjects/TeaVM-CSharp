@@ -8,5 +8,6 @@ public enum KlassType
     ENUM,
     ANNOTATION,
     FUNCTION,
+    BLOCK, // Code Block
     UNKNOW
 }
