@@ -16,7 +16,7 @@ namespace TeaVM.Program
             data.Data = new byte[] { 0x01 };
             TeaData data2 = new TeaData();
             data2.Type = TeaTypes.INT;
-            data2.Data = BitConverter.GetBytes(114514);
+            data2.Data = BitConverter.GetBytes(1145141919810);
             TeaData vmdata = new TeaData();
             vmdata.Type = TeaTypes.INT;
             vmdata.Data = new byte[] { 0x02 };
@@ -76,8 +76,11 @@ namespace TeaVM.Program
                 0x00,
                 */
                 
-                0x41,
-                0x00
+                /*0x41,
+                0x00,*/
+                
+                0x42,
+                0x00,
                 
             };
             DebugOutputTool.PrintKlass(klass);
