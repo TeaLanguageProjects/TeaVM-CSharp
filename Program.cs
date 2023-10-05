@@ -16,7 +16,10 @@ namespace TeaVM.Program
             data.Data = new byte[] { 0x01 };
             TeaData data2 = new TeaData();
             data2.Type = TeaTypes.INT;
-            data2.Data = BitConverter.GetBytes(1145141919810);
+            data2.Data = BitConverter.GetBytes(123);
+            TeaData data3 = new TeaData();
+            data3.Type = TeaTypes.INT;
+            data3.Data = BitConverter.GetBytes(456);
             TeaData vmdata = new TeaData();
             vmdata.Type = TeaTypes.INT;
             vmdata.Data = new byte[] { 0x02 };
@@ -27,6 +30,7 @@ namespace TeaVM.Program
             klass.LocalStack.Push(data);
             klass.LocalStack.Push(data);
             klass.LocalStack.Push(data2);
+            klass.LocalStack.Push(data3);
             vm.VMObjects.TryAdd(0x01, klass);
             klass.LocalData.ByteCodes = new byte[]
             {
@@ -79,7 +83,10 @@ namespace TeaVM.Program
                 /*0x41,
                 0x00,*/
                 
-                0x42,
+                /*0x42,
+                0x00,*/
+                
+                0x53,
                 0x00,
                 
             };
