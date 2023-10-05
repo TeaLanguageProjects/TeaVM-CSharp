@@ -2444,8 +2444,54 @@ namespace TeaVM.Core
                             }
                             break;
                         }
-                        
-                        
+                        case 0x40:
+                        {
+                            // byte[] longData = SourceKlass.LocalData.ReadBytes(PC, LONG_BYTES);
+                            // long indexId = BitConverter.ToInt64(longData, 0);
+                            // PC += LONG_BYTES;
+
+                            TeaData stackData;
+                            bool isSuccess = SourceKlass.LocalStack.TryPop(out stackData);
+                            break;
+                        }
+                        case 0x41:
+                        {
+                            TeaData stackData;
+                            bool isSuccess = SourceKlass.LocalStack.TryPop(out stackData);
+                            if (isSuccess)
+                            {
+                                
+                                if (stackData.Type == TeaTypes.INT)
+                                {
+                                    stackData.Type = TeaTypes.FLOAT;
+                                    stackData.Data = BitConverter.GetBytes(BitConverter.ToSingle(stackData.Data));
+                                    SourceKlass.LocalStack.Push(stackData);
+                                    
+                                }
+                                else
+                                {
+                                    TeaData nullData = TeaData.NewNormalData();
+                                    nullData.Type = TeaTypes.NULL;
+                                    nullData.SourceKlass = SourceKlass;
+                                    nullData.Data = new byte[] { };
+                                    nullData.IsList = false;
+
+                                    SourceKlass.LocalStack.Push(nullData);
+                                }
+
+                            }
+                            else
+                            {
+                                TeaData nullData = TeaData.NewNormalData();
+                                nullData.Type = TeaTypes.NULL;
+                                nullData.SourceKlass = SourceKlass;
+                                nullData.Data = new byte[] { };
+                                nullData.IsList = false;
+
+                                SourceKlass.LocalStack.Push(nullData);
+                            }
+                            break;
+                        }
                         
                         
                         
